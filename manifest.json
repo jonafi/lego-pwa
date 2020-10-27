@@ -1,0 +1,15 @@
+{
+    "name": "Ian Legos",
+    "short_name": "Ian Legos",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#cccccc",
+    "theme_color": "#00cc00",
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "256.png",
+        "type": "image/png", "sizes": "256x256"
+       }
+    ]
+  }

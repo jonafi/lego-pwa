@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Ian's Legos</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .card {
+        border: none;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+  <main>
+    <nav>
+      <h1>Ian's Legos</h1>
+    </nav>
+    <div class="container"></div>
+  </main>
+  <script>
+    const container = document.querySelector(".container")
+    const legos = [
+      { name: "X-Wing Mini", image: "30496.jpg", pdf: "30496.pdf" },
+      { name: "X-Wing", image: "75125.jpg", pdf: "75125.pdf" },
+      { name: "Snow Speeder", image: "75126.jpg", pdf: "75126.pdf" },
+      { name: "A-Wing", image: "75127.jpg", pdf: "75127.pdf" },
+      { name: "AT-ST", image: "75130.jpg", pdf: "75130.pdf" },
+      { name: "Vader Lab", image: "75183.jpg", pdf: "75183.pdf" },
+      { name: "Millennium Falcon", image: "75193.jpg", pdf: "75193.pdf" },
+      { name: "Jawa Speeder", image: "75198.jpg", pdf: "75198.pdf" },
+      { name: "Popcorn Stand", image: "30364.jpg", pdf: "30364.pdf" },
+      { name: "BBQ burnout", image: "60212.jpg", pdf: "60212.pdf" },
+      { name: "Toy Story 4 Carnival", image: "10771.jpg", pdf: "10771.pdf" },
+      { name: "Sweeper", image: "60249.jpg", pdf: "60249.pdf" },
+      { name: "Police Plane", image: "60206.jpg", pdf: "60206.pdf" },
+    ]
+    const displayLegos = () => {
+      let output = ""
+      legos.forEach(
+        ({ name, image, pdf }) =>
+          (output += `
+          <div class="row">
+
+          <div class="card offset-lg-2 col-lg-8">
+                        <h2>${name}</h2>                  
+                        <a href="${pdf}"><img src=${image} class="card-img-top"/></a>
+                      </div>
+                      </div>
+                      `)
+      )
+      container.innerHTML = output
+    }
+
+    document.addEventListener("DOMContentLoaded", displayLegos)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker
+          .register("serviceWorker.js")
+          .then(res => console.log("service worker registered"))
+          .catch(err => console.log("service worker not registered", err))
+      })
+    }
+  </script>
+</body>
+
+</html>
